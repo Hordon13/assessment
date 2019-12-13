@@ -1,0 +1,16 @@
+{
+  "name": "js-numerals",
+  "version": "1.0.0",
+  "description": "Solution to js-numerals assessment.",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "Donat Horvath",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2"
+  }
+}
