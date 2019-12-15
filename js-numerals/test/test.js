@@ -12,7 +12,7 @@ describe('AppTest', function () {
   });
 
   it('long number should throw overflow error', function () {
-    expect(() => convert(12345678910)).to.throw('Please use a number with less than 10 digits.');
+    expect(() => convert(1000000000000000000000000000000000)).to.throw('Please use a number with less than 33 digits.');
   });
 
   it('fn should return with a string', function () {
