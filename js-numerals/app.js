@@ -32,7 +32,7 @@ const convert = function (num) {
     80: 'eighty',
     90: 'ninety'
   };
-  const scale = ['thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion', 'octillion', 'nonillion'];
+  const scale = ['thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion'];
 
   if (isNaN(num)) {
     throw new TypeError('❗️You can only use numbers.');
@@ -40,9 +40,9 @@ const convert = function (num) {
     throw new TypeError('❗️Please use integers only.')
   }
 
-  const len = 1 + Math.log10(Math.abs(num) + 1) | 0;
-  if (len > 33) {
-    throw new RangeError('Please use a number with less than 33 digits.')
+  const len = Math.ceil(Math.log10(num + 1));
+  if (len > 15) {
+    throw new RangeError('Please use a number with less than 16 digits.')
   }
 
   if (num === 0) {
@@ -67,8 +67,9 @@ const convert = function (num) {
     let num = chunks[i];
     let result = '';
 
-    if (i > 0) {
-      result += scale[chunks.length - 1 - i] + ' ';
+    if (num === 0) {
+      chunks[i] = result;
+      continue;
     }
 
     if (num.toString().length === 3) {
@@ -81,7 +82,7 @@ const convert = function (num) {
       result += ' '
     }
 
-    if (i === 1 && chunks.length > 1) {
+    if ((i === chunks.length - 1 && chunks.length > 1) || (chunks[i].toString().length === 3 && chunks.length === 1)) {
       result += 'and '
     }
 
@@ -91,6 +92,9 @@ const convert = function (num) {
       result += numbers[num - num % 10] + '-' + numbers[num % 10];
     }
 
+    if (chunks.length > 1 && i !== chunks.length - 1) {
+      result += ' ' + scale[chunks.length - (2 + i)];
+    }
     chunks[i] = result;
   }
 
@@ -98,7 +102,11 @@ const convert = function (num) {
     chunks.unshift('minus')
   }
 
-  return chunks.join(' ')
+  let phrase = chunks.filter((el) => {
+    return el !== '';
+  });
+
+  return phrase.join(' ')
 };
 
 module.exports = convert;

@@ -12,7 +12,7 @@ describe('AppTest', function () {
   });
 
   it('long number should throw overflow error', function () {
-    expect(() => convert(1000000000000000000000000000000000)).to.throw('Please use a number with less than 33 digits.');
+    expect(() => convert(2000000000000000)).to.throw('Please use a number with less than 16 digits.');
   });
 
   it('fn should return with a string', function () {
@@ -45,6 +45,18 @@ describe('AppTest', function () {
 
   it('fn should return minus eleven', function () {
     expect(convert(-11)).to.equal('minus eleven');
+  });
+
+  it('fn should return minus one hundred', function () {
+    expect(convert(-100)).to.equal('minus one hundred');
+  });
+
+  it('fn should return minus one hundred seventy million and one', function () {
+    expect(convert(-170000001)).to.equal('minus one hundred seventy million and one');
+  });
+
+  it('fn should return extreme big number', function () {
+    expect(convert(999999999999999)).to.equal('nine hundred ninety-nine trillion nine hundred ninety-nine billion nine hundred ninety-nine million nine hundred ninety-nine thousand nine hundred and ninety-nine');
   });
 
 });
