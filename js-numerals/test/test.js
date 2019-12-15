@@ -36,7 +36,7 @@ describe('AppTest', function () {
   });
 
   it('fn should return nineteen hundred and ninety-nine', function () {
-    expect(convert(1999)).to.equal('nineteen hundred and ninety-nine');
+    expect(convert(1999)).to.equal('one thousand nine hundred and ninety-nine');
   });
 
   it('fn should return seventeen thousand nine hundred and ninety-nine', function () {

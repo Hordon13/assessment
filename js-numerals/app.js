@@ -1,8 +1,8 @@
 "use strict";
 
 const convert = function (num) {
-
-  let result = '';
+  let chunks = [];
+  let negative = false;
   const numbers = {
     1: 'one',
     2: 'two',
@@ -32,7 +32,7 @@ const convert = function (num) {
     80: 'eighty',
     90: 'ninety'
   };
-  const scale = ['hundred', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion', 'octillion', 'nonillion'];
+  const scale = ['thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion', 'octillion', 'nonillion'];
 
   if (isNaN(num)) {
     throw new TypeError('❗️You can only use numbers.');
@@ -48,15 +48,57 @@ const convert = function (num) {
   if (num === 0) {
     return 'zero';
   } else if (num < 0) {
-    result = 'minus ';
+    negative = true;
     num = -num;
   }
 
-  if (num in numbers) {
-    result += numbers[num];
+  let temp = '';
+  while (num > 0) {
+    temp += num % 10;
+    num = Math.floor(num / 10);
+    if (temp.length === 3 || num === 0) {
+      temp = Number(temp.split("").reverse().join(""));
+      chunks.unshift(temp);
+      temp = '';
+    }
   }
 
-  return result;
+  for (let i = 0; i < chunks.length; i++) {
+    let num = chunks[i];
+    let result = '';
+
+    if (i > 0) {
+      result += scale[chunks.length - 1 - i] + ' ';
+    }
+
+    if (num.toString().length === 3) {
+      result += numbers[num.toString()[0]] + ' hundred';
+      num = Number(num.toString().slice(-2));
+      if (num === 0) {
+        chunks[i] = result;
+        continue;
+      }
+      result += ' '
+    }
+
+    if (i === 1 && chunks.length > 1) {
+      result += 'and '
+    }
+
+    if (num in numbers) {
+      result += numbers[num];
+    } else {
+      result += numbers[num - num % 10] + '-' + numbers[num % 10];
+    }
+
+    chunks[i] = result;
+  }
+
+  if (negative) {
+    chunks.unshift('minus')
+  }
+
+  return chunks.join(' ')
 };
 
 module.exports = convert;
