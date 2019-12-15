@@ -1,18 +1,18 @@
 const expect = require('chai').expect;
-const convert = require('../app');
+const convert = require('./converter');
 
 describe('AppTest', function () {
 
   it('string input should throw type error', function () {
-    expect(() => convert('number')).to.throw('❗️You can only use numbers.');
+    expect(() => convert('number')).to.throw('non-numeric input');
   });
 
   it('float input should throw type error', function () {
-    expect(() => convert(1.2)).to.throw('❗️Please use integers only.');
+    expect(() => convert(1.2)).to.throw('input is not a number, but not an integer');
   });
 
   it('long number should throw overflow error', function () {
-    expect(() => convert(2000000000000000)).to.throw('Please use a number with less than 16 digits.');
+    expect(() => convert(2000000000000000)).to.throw('too long number, limit: 15');
   });
 
   it('fn should return with a string', function () {

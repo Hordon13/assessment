@@ -111,17 +111,4 @@ const convert = function (num) {
   return phrase.join(' ')
 };
 
-(() => {
-  const btn = document.getElementById('btn');
-  const input = document.getElementById('input');
-  const output = document.getElementById('output');
-
-  btn.addEventListener('click', () => {
-    try {
-      output.innerHTML = convert(Number(input.value));
-    } catch (e) {
-      console.log(e);
-      output.innerHTML = '❗Something is wrong. Check your input!';
-    }
-  });
-})();
+module.exports = convert;

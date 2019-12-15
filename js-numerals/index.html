@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <title> Number to Phrase Converter</title>
 </head>
 <body>
 <div class="app-container">
 
-  <div id="input-wrapper">
+  <div class="input-wrapper">
     <label>
       Input field
-      <input type="number" placeholder="42">
+      <input type="number" placeholder="42" id="input" required autofocus>
     </label>
-    <button type="submit">Submit</button>
+    <button id="btn">Submit</button>
   </div>
 
-  <div id="output-wrapper">
-    <p>undefined</p>
+  <div class="output-wrapper">
+    <p id="output"></p>
   </div>
 
-  <script src="./app.js"></script>
+  <script src="app.js"></script>
 </div>
 </body>
 </html>
