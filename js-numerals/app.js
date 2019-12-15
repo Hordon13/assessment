@@ -34,6 +34,8 @@ const convert = function (num) {
   };
   const scale = ['thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion'];
 
+  console.log(num);
+
   if (isNaN(num)) {
     throw new TypeError('non-numeric input');
   } else if (!Number.isInteger(num)) {

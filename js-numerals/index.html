@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel='icon' href='favicon.png'>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
   <title> Number to Phrase Converter</title>
@@ -9,16 +10,13 @@
 <body>
 <div class="app-container">
 
-  <div class="input-wrapper">
-    <label>
-      Input field
-      <input type="number" placeholder="42" id="input" required autofocus>
-    </label>
-    <button id="btn">Submit</button>
+  <div class="output-wrapper">
+    <p id="output">Enter a number!</p>
   </div>
 
-  <div class="output-wrapper">
-    <p id="output"></p>
+  <div class="input-wrapper">
+    <input type="number" placeholder="42" id="input" required autofocus>
+    <button id="btn">convert</button>
   </div>
 
   <script src="app.js"></script>

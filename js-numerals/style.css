@@ -5,4 +5,101 @@ body {
     color: black;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    -webkit-margin-start: 0;
+    -webkit-margin-end: 0;
+    -webkit-padding-before: 0;
+    -webkit-padding-start: 0;
+    -webkit-padding-end: 0;
+    -webkit-padding-after: 0;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-repeat: initial;
+    min-width: -webkit-min-content;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.output-wrapper {
+    font-size: 30px;
+    height: 1rem;
+    max-width: 800px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+#btn {
+    appearance: none;
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    background-color: transparent;
+    color: #999999;
+    border: 2px solid #c5c5c5;
+    border-radius: 5px;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+    outline: none;
+}
+
+#btn:hover {
+    border: 2px solid #999999;
+    color: #4b545f;
+}
+
+#input {
+    display: block;
+    font-weight: 400;
+    max-width: 300px;
+    font-size: 25px;
+    border: 0;
+    outline: none;
+    text-align: center;
+    -moz-appearance: textfield;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px solid #ddd;
+    color: #4b545f;
+    background: #fff;
+    padding: 10px 15px;
+    margin: 30px 0;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+#input:focus {
+    border-bottom: 1px solid #999999;
+}
+
+#input::placeholder {
+    color: #dddddd;
+}
+
+#input::-webkit-outer-spin-button,
+#input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
